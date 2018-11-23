@@ -7,4 +7,5 @@ function connectToDB($user, $password) {
     }
 }
 
+   
 

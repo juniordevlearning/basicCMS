@@ -1,23 +1,18 @@
 <html>
 <header>
-    <title>BasicCMS</title>
+    <title><?= $title; ?></title>
     <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
 </header>
-    <h1> Basic CMS System </h1>
-    <ul>
-        <li> Login für admin </li>
-        <li> Textbearbeitungsfeld </li>
-        <li> Feld für Titel </li>
-    </ul>
-
-
-
+<body>
+<h1> Basic CMS System </h1>
+<ul>
+    <li><del> Login für admin </del></li>
+    <li> Textbearbeitungsfeld </li>
+    <li> Feld für Titel </li>
+</ul>
 
 <?php
-    include 'config.php';
-    include 'connection.php';
-    include 'base.php';    
-    ?>
-<body>
+include 'admin.php';
+?>
 </body>
 </html> 
