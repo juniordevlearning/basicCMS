@@ -15,10 +15,9 @@
 
 <?php
     include 'config.php';
-    include 'connections.php';
-    include 'admin.php';
-
-?>
+    include 'connection.php';
+    include 'base.php';    
+    ?>
 <body>
 </body>
 </html> 
