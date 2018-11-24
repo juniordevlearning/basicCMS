@@ -12,7 +12,7 @@
 <?php
 if (isset($_POST['submit'])) {
     if ($_POST['username'] == TRUE && $_POST['password'] == TRUE) {
-        $con = connectToDB('admin', 'Password#123');
+        $con = connect('admin', 'Password#123');
         
         $stmt = $con->prepare('SELECT * FROM admins WHERE name = :user');
         $stmt->execute(['user' => $_POST['username']]);

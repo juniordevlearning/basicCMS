@@ -1,5 +1,5 @@
 <?php
-function connectToDB($user, $password) {
+function connect($user, $password) {
     try {
         return new PDO('mysql:host=localhost;dbname=basicCMS', $user, $password);
     } catch (\PDOException $e) {
