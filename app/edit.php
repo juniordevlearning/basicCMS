@@ -4,16 +4,44 @@
     <p><input type="text" name="title"></p>
     <p>Content:</p>
     <p><textarea name="content" rows="5" cols="40"></textarea></p>
-    <input type="submit" name="submit_post" value="Submit Post">
+    <input type="submit" name="create_post" value="Create">
 </form>
 
 <?php
 
-if (isset($_POST['submit_post'])) {
-    if ($_POST['content'] == TRUE && $_POST['title'] == TRUE) {
-
-        
-        $stmt = $pdo->prepare("INSERT INTO posts(title, content) VALUES (:title, :content)");
-        $stmt->execute(['title' => $_POST['title'], 'content' => $_POST['content']]);
+// check if Title and content is set
+if (isset($_POST['create_post']) && $_POST['content'] == TRUE && $_POST['title'] == TRUE) {
+    // check if title allready exitst
+    if (!titleAllreadyUsed($pdo)) { 
+        createPost($pdo);
+    } else {
+        echo "Title allready used";
     }
 }
+
+function titleAllreadyUsed($pdo) {
+    $titles = $pdo->query('SELECT title FROM posts');
+    foreach ($titles as $title) {
+        if ($title['title'] == $_POST['title']) {
+            return TRUE;
+        }
+    }
+}
+
+function createPost($pdo) {
+    $stmt = $pdo->prepare("INSERT INTO posts(title, content, created_at) VALUES (:title, :content, :created_at)");
+    $stmt->execute(['title' => $_POST['title'], 'content' => $_POST['content'], 'created_at' => date('Y-m-d')]);
+}
+
+$posts = $pdo->query('SELECT title, content, created_at FROM posts');
+foreach ($posts as $post)
+{
+    echo "Title: ".$post['title'] . '<br>';
+    echo "Content: ".$post['content'].'<br>';
+    echo "Date: ".$post['created_at'].'<br>';
+    echo "<br><br>";
+}
+?>
+<h1><?= $postTitle ?> </h1>
+
+<p><?= $postContent ?> <p>
