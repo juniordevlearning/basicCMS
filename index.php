@@ -7,9 +7,11 @@ if ($_SERVER['REDIRECT_URL']) {
     if (pathinfo($request, PATHINFO_EXTENSION)) {
         $request = substr($request, 0, strrpos($request, '.'));
     } 
-} else {
-    $request = "admin";
 }
+
+include 'router.php';
+$router = new Router($request);
+include 'routes.php';
 
 include 'app/connection.php';
 include 'config.php';

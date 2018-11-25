@@ -12,7 +12,7 @@
 </ul>
 
 <?php
-include "$request.php";
+#include "$request.php";
 ?>
 </body>
 </html> 
