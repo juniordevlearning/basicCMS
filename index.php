@@ -1,6 +1,6 @@
 <?php
 
-include 'config.php';
-include 'helpers.php';
+include 'app/config.php';
+include 'app/connection.php';
 
-include 'layout.php';
+include 'app/layout.php';

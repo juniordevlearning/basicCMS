@@ -8,15 +8,15 @@
 </form>
 
 <?php
-include 'helpers.php';
+include 'connection.php';
 
 if (isset($_POST['submit_post'])) {
     if ($_POST['content'] == TRUE && $_POST['title'] == TRUE) {
-        echo 'Title: '.$_POST['title'].'</br>Content: '.$_POST['content'];
 
-        $con = connect('admin', 'Password#123');
-        var_dump($con);
-        $stmt = $con->prepare("INSERT INTO posts(title, content) VALUES (:title, :content)");
+        $con = new Connection('admin', 'Password#123');
+        $pdo = $con->getPdo();
+
+        $stmt = $pdo->prepare("INSERT INTO posts(title, content) VALUES (:title, :content)");
         $stmt->execute(['title' => $_POST['title'], 'content' => $_POST['content']]);
     }
 }
