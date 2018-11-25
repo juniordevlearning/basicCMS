@@ -12,7 +12,7 @@
 </ul>
 
 <?php
-include 'admin.php';
+include "$request.php";
 ?>
 </body>
 </html> 
