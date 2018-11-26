@@ -11,8 +11,5 @@
     <li><del> Feld für Titel</del> </li>
 </ul>
 
-<?php
-#include "$request.php";
-?>
 </body>
 </html> 
