@@ -1,6 +1,6 @@
-<h1> Admin Section </h1>
+<h1> $adminTitle </h1>
 
-<form method="post">
+<form method="post" action="/admin">
     <p> Username or Emailaddress </p>
     <input name="username" type="text">
 
@@ -13,17 +13,13 @@
 <?php
 if (isset($_POST['submit'])) {
     if ($_POST['username'] == TRUE && $_POST['password'] == TRUE) {
-
         $stmt = $pdo->prepare('SELECT * FROM admins WHERE name = :user');
         $stmt->execute(['user' => $_POST['username']]);
         $user = $stmt->fetch();
-
         if ($user['password'] == $_POST['password']) {
-            header('Location: edit');
-        } else {
-            echo "wrong username or pw";
-        }
-    } else {
-        echo "false";
+            $_SESSION['admin'] = true;
+
+            $view->direct('edit');
+        } 
     }
 }

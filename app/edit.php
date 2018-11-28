@@ -8,7 +8,7 @@
 </form>
 
 <?php
-
+var_dump($_SESSION);
 // check if Title and content is set
 if (isset($_POST['create_post']) && $_POST['content'] == TRUE && $_POST['title'] == TRUE) {
     // check if title allready exitst
