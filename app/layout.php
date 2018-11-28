@@ -10,6 +10,6 @@
     <li><del> Textbearbeitungsfeld </del></li>
     <li><del> Feld für Titel</del> </li>
 </ul>
-    <?php include $this->body ?>
+    <?php include $this->getBody() ?>
 </body>
 </html> 

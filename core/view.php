@@ -3,7 +3,7 @@
 class View
 {
     public $pdo;
-    public $body;
+    protected $body;
 
     public function __construct($pdo) 
     {
@@ -13,6 +13,11 @@ class View
     public function direct($file)
     {
         $this->body = 'app/'.$file.'.php';
+    }
+
+    public function getBody()
+    {
+        return isset($this->body) ? $this->body : 'app/home.php';
     }
     
     public function render()

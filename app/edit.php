@@ -9,6 +9,9 @@
 
 <?php
 var_dump($_SESSION);
+if ($_SESSION['admin'] != true ) {
+    header("Location: /home");
+}
 // check if Title and content is set
 if (isset($_POST['create_post']) && $_POST['content'] == TRUE && $_POST['title'] == TRUE) {
     // check if title allready exitst

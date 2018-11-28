@@ -6,4 +6,6 @@ ini_set('display_errors', 1);
 include 'config.php';
 include 'core/bootstrap.php';
 
+var_dump($_SESSION);
+echo "<br>";
 echo $view->render();
