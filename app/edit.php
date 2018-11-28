@@ -8,15 +8,15 @@
 </form>
 
 <?php
-var_dump($_SESSION);
+// redirect user to home if not logged in
 if ($_SESSION['admin'] != true ) {
     header("Location: /home");
 }
 // check if Title and content is set
 if (isset($_POST['create_post']) && $_POST['content'] == TRUE && $_POST['title'] == TRUE) {
     // check if title allready exitst
-    if (!titleAllreadyUsed($pdo)) { 
-        createPost($pdo);
+    if (!titleAllreadyUsed($this->pdo)) { 
+        createPost($this->pdo);
     } else {
         echo "Title allready used";
     }
@@ -36,7 +36,7 @@ function createPost($pdo) {
     $stmt->execute(['title' => $_POST['title'], 'content' => $_POST['content'], 'created_at' => date('Y-m-d')]);
 }
 
-$posts = $pdo->query('SELECT title, content, created_at FROM posts');
+$posts = $this->pdo->query('SELECT title, content, created_at FROM posts');
 foreach ($posts as $post)
 {
     echo "Title: ".$post['title'] . '<br>';
@@ -45,6 +45,4 @@ foreach ($posts as $post)
     echo "<br><br>";
 }
 ?>
-<h1><?= $postTitle ?> </h1>
 
-<p><?= $postContent ?> <p>
