@@ -10,7 +10,6 @@
     <li><del> Textbearbeitungsfeld </del></li>
     <li><del> Feld für Titel</del> </li>
 </ul>
-    <?php include $body ?>
-    <?php var_dump($pdo) ?>
+    <?php include $this->body ?>
 </body>
 </html> 

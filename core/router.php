@@ -4,7 +4,13 @@ class Router
 {
     public $requestUri;
     public $requestMethod;
-    protected $routes = [];
+    public $routes = [];
+    protected $view;
+    
+    // getting view objects since no DIC
+    public function __construct($view) {
+        $this->view = $view;
+    }
     // gets URI and request Method
     public function getRequest($request = NULL)
     {
@@ -31,7 +37,7 @@ class Router
         if ($routes = $this->getRoutes($this->requestMethod)) {
             foreach ($routes as $route => $view) {
                 if ($route == $this->requestUri) {
-                    include($view.'.php');
+                    $this->view->direct($view);
                 }
             }
         }
