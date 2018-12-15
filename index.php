@@ -9,4 +9,5 @@ include 'core/bootstrap.php';
 
 var_dump($_SESSION);
 echo "<br>";
-echo View()->render();
+var_dump($view);
+echo $view->render();

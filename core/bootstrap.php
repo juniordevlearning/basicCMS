@@ -12,9 +12,11 @@ $con = new Connection($user, $password);
 $pdo = $con->getPdo();
 
 include 'view.php';
+$view = new View;
+$GLOBALS['view'] = $view;
 function View()
 {
-    return new View();
+    return $GLOBALS['view'];
 }
 
 include 'router.php';
