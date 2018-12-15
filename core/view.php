@@ -2,7 +2,7 @@
 
 class View
 {
-    public $pdo;
+    protected $pdo;
     protected $body;
 
     public function __construct($pdo) 
@@ -10,14 +10,19 @@ class View
         $this->pdo = $pdo;
     }
 
-    public function direct($file)
+    public function setBody($body)
     {
-        $this->body = 'app/'.$file.'.php';
+        $this->body = $body;
     }
 
     public function getBody()
     {
-        return isset($this->body) ? $this->body : 'app/home.php';
+        return isset($this->body) ? 'app/'.$this->body.'.php' : 'app/home.php';
+    }
+
+    public function getPdo()
+    {
+        return $this->pdo;
     }
     
     public function render()

@@ -35,12 +35,26 @@ class Router
     public function match()
     {
         if ($routes = $this->getRoutes($this->requestMethod)) {
-            foreach ($routes as $route => $view) {
+            foreach ($routes as $route => $destination) {
                 if ($route == $this->requestUri) {
-                    $this->view->direct($view);
+                    $this->resolve($destination);
+                    //$this->view->setBody($view);
                 }
             }
         }
+    }
+    protected function resolve($destination)
+    {
+        list($controller, $action) = explode('@', $destination);
+
+        $this->direct($controller, $action);
+    }
+    protected function direct($controller, $action)
+    {
+        $file = include(__DIR__."/../app/controllers/{$controller}.php");
+        $obj = new $controller($this->view);
+
+        $obj->$action();
     }
     // declare get route 
     public function get($route, $file)

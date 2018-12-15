@@ -9,7 +9,7 @@
 
 <?php
 // redirect user to home if not logged in
-if ($_SESSION['admin'] != true ) {
+if (!isset($_SESSION['admin'])) {
     header("Location: /home");
 }
 // check if Title and content is set
