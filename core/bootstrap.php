@@ -12,10 +12,14 @@ $con = new Connection($user, $password);
 $pdo = $con->getPdo();
 
 include 'view.php';
-$view = new View($pdo);
+function View()
+{
+    return new View();
+}
 
 include 'router.php';
-$router = new Router($view);
+$router = new Router;
+
 include 'routes.php';
 $router->getRequest();
 $router->match();

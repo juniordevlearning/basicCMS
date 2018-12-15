@@ -5,12 +5,7 @@ class Router
     public $requestUri;
     public $requestMethod;
     public $routes = [];
-    protected $view;
-    
-    // getting view objects since no DIC
-    public function __construct($view) {
-        $this->view = $view;
-    }
+
     // gets URI and request Method
     public function getRequest($request = NULL)
     {
@@ -38,7 +33,6 @@ class Router
             foreach ($routes as $route => $destination) {
                 if ($route == $this->requestUri) {
                     $this->resolve($destination);
-                    //$this->view->setBody($view);
                 }
             }
         }
@@ -52,7 +46,7 @@ class Router
     protected function direct($controller, $action)
     {
         $file = include(__DIR__."/../app/controllers/{$controller}.php");
-        $obj = new $controller($this->view);
+        $obj = new $controller;
 
         $obj->$action();
     }
