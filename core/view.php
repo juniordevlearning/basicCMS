@@ -3,10 +3,12 @@
 class View
 {
     protected $body;
+    public $vars = [];
 
-    public function setBody($body)
+    public function setBody($body, $vars = [])
     {
         $this->body = $body;
+        $this->vars = $vars;
     }
 
     public function getBody()

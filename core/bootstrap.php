@@ -9,7 +9,6 @@ if (isset($_SESSION['start'])) {
 
 include 'connection.php';
 $con = new Connection($user, $password);
-$pdo = $con->getPdo();
 
 include 'view.php';
 $view = new View;

@@ -7,12 +7,13 @@ class Router
     public $routes = [];
 
     // gets URI and request Method
+    // TODO: break this method down in two methods
     public function getRequest($request = NULL)
     {
         if ($request === NULL) {
             $request = trim($_SERVER['REQUEST_URI'], '/, .');
         }
-
+        // TODO: break down what this does
         if (pathinfo($request, PATHINFO_EXTENSION)) {
             $request = substr($request, 0, strrpos($request, '.'));
         }
@@ -37,8 +38,10 @@ class Router
             }
         }
     }
+    // TODO: when no @ in destination, allways resolve index method
     protected function resolve($destination)
     {
+
         list($controller, $action) = explode('@', $destination);
 
         $this->direct($controller, $action);
