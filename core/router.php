@@ -38,13 +38,15 @@ class Router
             }
         }
     }
-    // TODO: when no @ in destination, allways resolve index method
+    // if no @ in string then use default view, which is home
+    // TODO: extra would be: if only controller is given then resolve index method of given controller
     protected function resolve($destination)
     {
+        if (strpos($destination, '@') === TRUE) {
+            list($controller, $action) = explode('@', $destination);
 
-        list($controller, $action) = explode('@', $destination);
-
-        $this->direct($controller, $action);
+            $this->direct($controller, $action);
+        }        
     }
     protected function direct($controller, $action)
     {
