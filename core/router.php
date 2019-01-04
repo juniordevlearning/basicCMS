@@ -1,9 +1,8 @@
 <?php
-
+//TODO: Add test for the router
 class Router
 {
     public $routes = [];
-    public $property;
     /**
      * Returns request method, if no method is requested return Get
      *
