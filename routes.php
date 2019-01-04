@@ -1,8 +1,5 @@
 <?php
 
-$router->get('', 'home');
-$router->get('/', 'home');
-
 $router->get('edit', 'editController@index');
 $router->post('edit', 'editController@store');
 

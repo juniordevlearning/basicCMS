@@ -1,4 +1,4 @@
-<h1> $adminTitle </h1>
+<h1><?= $this->vars['title']; ?></h1>
 
 <form method="post" >
     <p> Username or Emailaddress </p>

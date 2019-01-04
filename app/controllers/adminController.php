@@ -4,7 +4,7 @@ class adminController
 {
     public function index()
     {
-        View()->setBody('admin');
+        View()->setBody('admin',['title' => 'This is the admin page']);
     }
 
     public function login()

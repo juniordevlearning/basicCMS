@@ -20,7 +20,5 @@ function View()
 
 include 'router.php';
 $router = new Router;
-
 include 'routes.php';
-$router->getRequest();
 $router->match();
