@@ -1,0 +1,1 @@
+This started as a basic cms project just for learning, but it became more of a create my own framework kind of thing. Not sure where this will end up but i try to just keep improving the framework by creating the CMS. 
