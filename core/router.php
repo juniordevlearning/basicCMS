@@ -53,19 +53,21 @@ class Router
             }
         }
     }
-    // TODO: extra would be: if only controller is given then resolve index method of given controller
     /**
      * takes the given destination of the route 
      * and seperates controller and action
-     * if no @ in string then use default view, which is home
+     * if no @ in string then use index method of destination
      * 
      * @param String $destination
      */
     protected function resolve(String $destination)
     {
-        list($controller, $action) = explode('@', $destination);
-
-        $this->direct($controller, $action);       
+        if (strpos($destination , '@')) {
+            list($controller, $action) = explode('@', $destination);
+            $this->direct($controller, $action); 
+        } else {
+            $this->direct($destination, 'index');
+        }
     }
     /**
      * Directs which method of controller will be used

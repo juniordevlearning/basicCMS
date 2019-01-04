@@ -1,5 +1,7 @@
 <?php
 
+$router->get('home', 'homeController');
+
 $router->get('edit', 'editController@index');
 $router->post('edit', 'editController@store');
 
