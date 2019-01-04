@@ -43,7 +43,6 @@ class Router
     /**
      * looking for match in request and route
      */
-    // TODO: Change $this->getRoutes() so that it only gets called once in the beginning and not with every request
     public function match()
     {
         if ($routes = $this->getRoutes($this->getRequestMethod())) {
